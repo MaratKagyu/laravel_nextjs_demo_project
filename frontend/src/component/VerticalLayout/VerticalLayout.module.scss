@@ -1,0 +1,16 @@
+
+.VerticalLayout {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #FFF;
+  height: 100%;
+}
+
+.VLScrollableContent {
+  flex: 1 1 auto;
+  overflow: auto;
+  background: linear-gradient(-45deg, #7758d5, #6085b6);
+  padding: 10px;
+}

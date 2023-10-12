@@ -1,0 +1,98 @@
+@import "../../../../styles/animations";
+
+.FormButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+  box-sizing: border-box;
+  transition: color .1s ease, background-color .1s ease;
+
+  &_normal {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &_wide {
+    padding: 8px 15px;
+    min-width: 120px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &_small {
+    padding: 4px 6px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &_tiny {
+    padding: 4px 6px;
+    margin: 2px;
+    font-size: 12px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &_success {
+    background: #5ca44d;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background: #3d9a2d;
+    }
+  }
+
+  &_primary {
+    background: #5473c4;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background: #2a54c2;
+    }
+  }
+
+  &_neutral {
+    background: #f0f0f0;
+    color: #444;
+
+    &:hover,
+    &:focus {
+      background: #eaeaea;
+      color: #000;
+    }
+  }
+
+  &_danger {
+    background: #a11d1d;
+    color: #eee;
+
+    &:hover,
+    &:active {
+      background-color: #ce1c1c;
+      color: #fff;
+    }
+  }
+
+  &_loading {
+    color: transparent;
+    @include useStandardFlickerAnimation(#eee, 100%, 4);
+    cursor: default;
+  }
+
+  &_disabled {
+    background: #ddd;
+    color: #aaa;
+    cursor: default;
+  }
+}

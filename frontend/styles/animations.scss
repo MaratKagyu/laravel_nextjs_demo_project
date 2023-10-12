@@ -1,0 +1,29 @@
+
+@keyframes PendingOpaqueAnimation {
+  0%{background-position:-50% 50% ; opacity: 1}
+  10%{background-position:-50% 50%; opacity: 1}
+  30%{background-position:-50% 50%; opacity: .4}
+  60%{background-position:-50% 50%; opacity: 1}
+  85%{background-position:-50% 50%; opacity: 1}
+  100%{background-position:150% 50%;}
+}
+
+/**
+  $primaryColor - primary background color
+  $flickerBrightness = 1 .. 100%
+  $flickerSharpness = recommended value = 4 (1 ... 10)
+ */
+@mixin useStandardFlickerAnimation($primaryColor, $flickerBrightness, $flickerSharpness) {
+  $secondaryColor: mix(white, $primaryColor, ($flickerBrightness / $flickerSharpness));
+  $flickerColor: mix(white, $primaryColor, $flickerBrightness);
+  background: linear-gradient(
+    255deg,
+    $primaryColor 0%,
+    $secondaryColor 35%,
+    $flickerColor 50%,
+    $secondaryColor 65%,
+    $primaryColor 100%
+  );
+  background-size: 200% 200%;
+  animation: PendingOpaqueAnimation 3s linear infinite;
+}
