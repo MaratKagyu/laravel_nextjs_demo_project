@@ -2,13 +2,16 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Enum\UserSeedTypes;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     private static $userTokenList = [
         "MAIN" => '',
         "SECONDARY" => '',
@@ -42,5 +45,26 @@ class DatabaseSeeder extends Seeder
             $userList[$userSeedType->code()] = $user;
         }
 
+        // Generate tasks
+        Task::factory()->create([
+            "creator_id" => $userList[UserSeedTypes::MAIN->code()],
+            "doer_id" => $userList[UserSeedTypes::MAIN->code()],
+            "status" => Task::TASK_NEW,
+        ]);
+        Task::factory()->create([
+            "creator_id" => $userList[UserSeedTypes::MAIN->code()],
+            "doer_id" => $userList[UserSeedTypes::SECONDARY->code()],
+            "status" => Task::TASK_IN_PROGRESS,
+        ]);
+        Task::factory()->create([
+            "creator_id" => $userList[UserSeedTypes::MAIN->code()],
+            "doer_id" => $userList[UserSeedTypes::SECONDARY->code()],
+            "status" => Task::TASK_ARCHIVED,
+        ]);
+        Task::factory()->create([
+            "creator_id" => $userList[UserSeedTypes::SECONDARY->code()],
+            "doer_id" => $userList[UserSeedTypes::MAIN->code()],
+            "status" => Task::TASK_ARCHIVED,
+        ]);
     }
 }

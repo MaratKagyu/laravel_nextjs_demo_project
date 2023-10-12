@@ -19,6 +19,37 @@ Route::post(
     [\App\Http\Controllers\AuthController::class, 'authenticate'],
 )->name('authenticate');
 
-Route::middleware('auth:sanctum')->get('/account', function (Request $request) {
-    return $request->user();
-})->name('account');
+Route::group(
+    ["middleware" => ['auth:sanctum']],
+    function () {
+        Route::get('/account', function (Request $request) {
+            return $request->user();
+        })->name('account');
+
+        Route::get(
+            '/tasks/{id}',
+            [\App\Http\Controllers\TaskController::class, 'show']
+        )->name('showTask');
+
+        Route::get(
+            '/tasks/list/created',
+            [\App\Http\Controllers\TaskController::class, 'showCreatedByUser']
+        )->name('taskListCreated');
+
+        Route::get(
+            '/tasks/list/assigned',
+            [\App\Http\Controllers\TaskController::class, 'showAssignedToUser']
+        )->name('taskListAssigned');
+
+        Route::post(
+            '/tasks',
+            [\App\Http\Controllers\TaskController::class, 'create']
+        )->name('createTask');
+
+        Route::post(
+            '/tasks/{id}',
+            [\App\Http\Controllers\TaskController::class, 'update']
+        )->name('updateTask');
+    }
+);
+

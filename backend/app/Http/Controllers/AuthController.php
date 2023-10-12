@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     public function authenticate(Request $request): JsonResponse
     {
@@ -26,6 +26,6 @@ class AuthController extends Controller
 
         // TODO: Emmit LOGGED IN event
 
-        return response()->json(['token' => $user->createToken('default')->plainTextToken], 200);
+        return $this->respond(['token' => $user->createToken('default')->plainTextToken]);
     }
 }
