@@ -9,7 +9,9 @@ export interface ApiErrorData {
 }
 export const apiEndpoint = {
   authenticate: '/api/authenticate',
-  account: '/api/account'
+  account: '/api/account',
+  createdTasks: (page: number) => 'api/tasks/list/created?page=' + page,
+  assignedTasks: (page: number) => 'api/tasks/list/assigned?page=' + page,
 }
 
 const instance = axios.create({

@@ -1,0 +1,51 @@
+@import "../../../styles/animations";
+
+.Accordion {
+  background: #fcfcfc;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+
+  &__Title {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    background: #eee;
+  }
+
+  &__TitleText {
+    font-weight: 600;
+    font-size: 18px;
+    flex: 1 1 auto;
+    text-align: left;
+    color: #666;
+  }
+
+  &__ExpandIcon {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    background: url('/image/icon/down-arrow.svg') center center no-repeat;
+    background-size: contain;
+
+    &_collapsed {
+      background: url('/image/icon/right-arrow.svg') center center no-repeat;
+      background-size: contain;
+    }
+  }
+
+
+  &__Body {
+
+  }
+
+  &__Body_hidden {
+    display: none;
+  }
+}

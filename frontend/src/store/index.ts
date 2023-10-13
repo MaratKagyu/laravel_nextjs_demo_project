@@ -1,9 +1,11 @@
 import {combineReducers} from "redux";
 import accountSlice from "./account/account-slice";
 import {configureStore} from "@reduxjs/toolkit";
+import dashboardSlice from "@/store/dashboard/dashboard-slice";
 
 const reducerList = combineReducers({
   account: accountSlice,
+  dashboard: dashboardSlice,
 });
 
 export const store = configureStore({
