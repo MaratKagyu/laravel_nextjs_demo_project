@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Task::factory()->create([
             "creator_id" => $userList[UserSeedTypes::MAIN->code()],
-            "doer_id" => $userList[UserSeedTypes::SECONDARY->code()],
+            "doer_id" => null,
             "status" => Task::TASK_IN_PROGRESS,
         ]);
         Task::factory()->create([

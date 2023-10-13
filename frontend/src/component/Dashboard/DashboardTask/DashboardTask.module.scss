@@ -29,6 +29,11 @@
     font-size: 12px;
     font-weight: bold;
     font-style: normal;
+
+    &_unassigned {
+      background: #ce0f0f;
+      color: white;
+    }
   }
 
   &__DelegationIcon {

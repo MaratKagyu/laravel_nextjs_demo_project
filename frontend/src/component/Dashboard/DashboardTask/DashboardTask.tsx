@@ -36,7 +36,10 @@ const DashboardTask: React.FC<DashboardTaskPropsInterface> = (
         <>
           <em className={classes.Task__UserLogo}>{creatorLogoString}</em>
           <em className={classes.Task__DelegationIcon} />
-          <em className={classes.Task__UserLogo}>{doerLogoString}</em>
+          <em className={clsx({
+            [classes.Task__UserLogo]: true,
+            [classes.Task__UserLogo_unassigned]: !task.doer,
+          })}>{doerLogoString}</em>
           <div className={classes.Task__Description}>
             <strong>{task.title}</strong>
             Assigned to: {task.doer ? task.doer.name : 'no one'}
